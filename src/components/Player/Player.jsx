@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 export const Player = ({ course }) => {
   const { lessons } = course;
+  console.log(lessons);
   const [currentVideo, setCurrentVideo] = useState(lessons[0]);
 
   const handleVideoSelect = (video) => {
@@ -23,10 +24,8 @@ Player.propTypes = {
   course: PropTypes.shape({
     lessons: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        videoUrl: PropTypes.string.isRequired,
         thumbnailUrl: PropTypes.string,
       })
     ).isRequired,
