@@ -12,6 +12,10 @@ export const Video = styled.video`
   margin-top: 40px;
   width: 750px;
   height: 300px;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const Title = styled.h3`
@@ -23,6 +27,10 @@ export const Title = styled.h3`
   border-radius: 10px;
   background-color: #000;
   color: #fff;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const ListTitle = styled.h3`
@@ -34,10 +42,14 @@ export const ListTitle = styled.h3`
 export const List = styled.ul`
   display: flex;
   list-style: none;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const Item = styled.li`
-  background-color: #4e4e4e;
+  padding: 10px;
+  background-color: #000000;
   cursor: pointer;
   text-align: center;
   &:not(:last-child) {
@@ -47,5 +59,9 @@ export const Item = styled.li`
 
   &:hover {
     box-shadow: 0px 0px 15px 0px rgb(255, 255, 255);
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-bottom: 10px;
   }
 `;

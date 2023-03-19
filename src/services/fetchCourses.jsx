@@ -8,7 +8,8 @@ export async function fetchToken() {
     localStorage.setItem("token", data.token);
     return data.token;
   } catch (error) {
-    console.log(error);
+    console.error("An error occurred while fetching the token:", error);
+    throw error;
   }
 }
 
@@ -19,7 +20,13 @@ export async function getCourses() {
     });
     return data.courses;
   } catch (error) {
-    console.log(error);
+    if (error.response) {
+      console.log(`Request failed with status code ${error.response.status}`);
+    } else if (error.request) {
+      console.log("Request failed to send");
+    } else {
+      console.log(`Error: ${error.message}`);
+    }
   }
 }
 
@@ -30,6 +37,21 @@ export async function getCourseInfo(courseId) {
     });
     return data;
   } catch (error) {
-    console.log(error);
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log("Error", error.message);
+    }
+    console.log(error.config);
   }
 }

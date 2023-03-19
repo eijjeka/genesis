@@ -42,5 +42,12 @@ const CardCourse = ({ itemData }) => {
 export default CardCourse;
 
 CardCourse.propTypes = {
-  itemData: PropTypes.object.isRequired,
+  itemData: PropTypes.shape({
+    previewImageLink: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    lessonsCount: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    meta: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 };

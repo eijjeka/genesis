@@ -41,5 +41,14 @@ const CourseList = ({ data }) => {
 export default CourseList;
 
 CourseList.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      previewImageLink: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      lessonsCount: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
+      meta: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
 };

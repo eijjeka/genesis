@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { List, Item, ListTitle } from "./Player.styled";
 
 export const VideoList = ({ videos, onSelect }) => {
@@ -13,4 +14,14 @@ export const VideoList = ({ videos, onSelect }) => {
       </List>
     </>
   );
+};
+
+VideoList.propTypes = {
+  videos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
