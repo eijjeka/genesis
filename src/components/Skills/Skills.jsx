@@ -7,11 +7,12 @@ export const Skills = ({ meta }) => {
     <Container>
       <Title>Skills</Title>
       <List>
-        {skills.map((el, index) => (
-          <li key={index}>
-            <Item>{el}</Item>
-          </li>
-        ))}
+        {skills &&
+          skills.map((el, index) => (
+            <li key={index}>
+              <Item>{el}</Item>
+            </li>
+          ))}
       </List>
     </Container>
   );
