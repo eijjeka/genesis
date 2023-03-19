@@ -1,24 +1,20 @@
 import {
   ContainerCourseDetails,
   CourseContainer,
-  Title,
-  PreTitle,
+  // Title,
+  // PreTitle,
   ContainerMeta,
-  ImagePoster,
+  // ImagePoster,
 } from "./CourseDetailsCard.styled";
 import PropTypes from "prop-types";
+import { Player } from "../../../Player/Player";
 
 const CourseDetailsCard = ({ data }) => {
-  const { title, tagline, previewImageLink } = data;
   return (
     <ContainerCourseDetails>
       <CourseContainer>
-        <ImagePoster src={`${previewImageLink}/cover.webp`} alt="poster" />
-
-        <ContainerMeta>
-          <Title>{title}</Title>
-          <PreTitle>{tagline}</PreTitle>
-        </ContainerMeta>
+        <Player course={data} />
+        <ContainerMeta></ContainerMeta>
       </CourseContainer>
     </ContainerCourseDetails>
   );

@@ -6,7 +6,7 @@ export const ContainerCourseDetails = styled.div`
   padding: 10px;
   border-radius: 30px;
   border: 0.5px solid #fff;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(96, 96, 96, 0.8);
   color: #fff;
 
   @media screen and (max-width: 480px) {

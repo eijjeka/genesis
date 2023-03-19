@@ -7,6 +7,7 @@ export const ItemLink = styled(Link)`
 `;
 
 export const Item = styled.li`
+  position: relative;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
@@ -21,14 +22,37 @@ export const Item = styled.li`
     width: 80%;
   }
 `;
-export const Title = styled.p`
-  font-size: 20px;
-  margin-bottom: 5px;
-`;
+
 export const MetaWrapper = styled.div`
   padding: 10px;
 `;
+
+export const Title = styled.h2`
+  margin-bottom: 8px;
+  font-size: 14px;
+`;
+
+export const PreTitle = styled.p`
+  font-size: 12px;
+  margin-bottom: 8px;
+`;
+
 export const Image = styled.img`
   display: block;
   max-width: 100%;
+`;
+
+export const Rating = styled.p`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => (props.value >= 4 ? "#138000" : "#FDD700")};
+  color: #fff;
+  font-size: 16px;
 `;
