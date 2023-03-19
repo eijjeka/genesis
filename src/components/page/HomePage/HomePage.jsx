@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CourseList from "../../CourseList";
+import Pagination from "components/Pagination/Pagination";
 import * as CoursesAPI from "../../../services/fetchCourses";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
     }
   }, [token]);
 
-  return <CourseList data={courses} />;
+  return <Pagination data={courses} />;
 };
 
 export default HomePage;

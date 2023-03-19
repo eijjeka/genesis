@@ -48,6 +48,5 @@ CardCourse.propTypes = {
     lessonsCount: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
-    meta: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
