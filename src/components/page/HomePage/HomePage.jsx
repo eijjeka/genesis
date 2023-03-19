@@ -1,25 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import CourseList from "../../CourseList";
 import * as CoursesAPI from "../../../services/fetchCourses";
-import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 const HomePage = () => {
-  const [course, setCourses] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [courses, setCourse] = useState([]);
 
   useEffect(() => {
-    CoursesAPI.getCourses()
-      .then((data) => {
-        Loading.circle({
-          svgColor: "#ff6b01",
-        });
-        setCourses(data);
-      })
-      .finally(() => {
-        Loading.remove();
-      });
-  }, []);
+    if (!token) {
+      CoursesAPI.fetchToken().then(setToken);
+    } else {
+      CoursesAPI.getCourses().then(setCourse);
+    }
+  }, [token]);
 
-  return <CourseList data={course} />;
+  return <CourseList data={courses} />;
 };
 
 export default HomePage;

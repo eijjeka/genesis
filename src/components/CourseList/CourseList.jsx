@@ -1,20 +1,40 @@
 import CardCourse from "../CardCourse";
 import { List } from "./CourseList.styled";
 import PropTypes from "prop-types";
-import { useLocation } from "react-router-dom";
-import { ItemLink } from "../CardCourse/CardCourse.styled";
+import usePagination from "../../hooks/usePagination";
 
 const CourseList = ({ data }) => {
-  const location = useLocation();
+  const {
+    firstContentIndex,
+    lastContentIndex,
+    nextPage,
+    prevPage,
+    // page,
+    // setPage,
+    // totalPages,
+  } = usePagination({
+    contentPerPage: 10,
+    count: data,
+  });
 
   return (
-    <List>
-      {data.map((el) => (
-        <ItemLink to={`${el.id}`} state={{ from: location }} key={el.id}>
-          <CardCourse itemData={el} />
-        </ItemLink>
-      ))}
-    </List>
+    <>
+      <List>
+        {data.slice(firstContentIndex, lastContentIndex).map((el) => (
+          <CardCourse itemData={el} key={el.id} />
+        ))}
+      </List>
+      {data && (
+        <div className="pagination">
+          <button onClick={prevPage} className="page">
+            &larr;
+          </button>
+          <button onClick={nextPage} className="page">
+            &rarr;
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

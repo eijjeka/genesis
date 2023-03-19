@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Outlet, Link } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import * as CoursesAPI from "../../../services/fetchCourses";
 import CourseDetailsCard from "./CourseDetailsCard";
 import {
@@ -20,7 +20,6 @@ const CourseDetailsPage = () => {
   useEffect(() => {
     CoursesAPI.getCourseInfo(id)
       .then((data) => {
-        console.log(data);
         Loading.circle({
           svgColor: "#ff6b01",
           cssAnimationDuration: 800,

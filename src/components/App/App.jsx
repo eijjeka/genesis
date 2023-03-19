@@ -10,10 +10,6 @@ const HomePage = lazy(() =>
   import("../page/HomePage" /* webpackChunkName: "home-view" */)
 );
 
-const MoviesPage = lazy(() =>
-  import("../page/MoviesPage" /* webpackChunkName: "movies-view" */)
-);
-
 const CourseDetailsPage = lazy(() =>
   import(
     "../page/CourseDetailsPage" /* webpackChunkName: "movie-details-view" */
@@ -32,7 +28,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          {/* <Route path="courses" element={<MoviesPage />} /> */}
           <Route path=":id" element={<CourseDetailsPage />} />
         </Route>
       </Routes>

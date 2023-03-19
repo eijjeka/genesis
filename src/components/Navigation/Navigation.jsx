@@ -4,8 +4,7 @@ const Navigation = () => {
   return (
     <Header>
       <Nav>
-        <Link to="/">Home</Link>
-        {/* <Link to="/movies">Movies</Link> */}
+        <Link to="/">UCourse</Link>
       </Nav>
     </Header>
   );
