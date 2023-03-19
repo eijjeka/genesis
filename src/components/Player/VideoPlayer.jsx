@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Container, Video, Title } from "./Player.styled";
+import PropTypes from "prop-types";
+
 export const VideoPlayer = ({ video }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -30,4 +32,14 @@ export const VideoPlayer = ({ video }) => {
       <Title>{video.title}</Title>
     </Container>
   );
+};
+
+VideoPlayer.propTypes = {
+  video: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    videoUrl: PropTypes.string.isRequired,
+    thumbnailUrl: PropTypes.string,
+  }).isRequired,
 };
