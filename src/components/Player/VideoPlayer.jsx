@@ -14,32 +14,36 @@ export const VideoPlayer = ({ video }) => {
 
   return (
     <Container>
-      <Video
-        controls
-        poster={video.previewImageLink}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={(event) => {
-          setDuration(event.target.duration);
-          const savedTime = localStorage.getItem(video.id);
-          if (savedTime) {
-            event.target.currentTime = savedTime;
-          }
-        }}
-      >
-        <source src={video.link} type="application/x-mpegURL" />
-        Sorry, your browser doesn't support embedded videos.
-      </Video>
-      <Title>{video.title}</Title>
+      {video.status === "locked" ? (
+        <h1>Sorry this videos is locked</h1>
+      ) : (
+        <>
+          <Video
+            controls
+            poster={video.previewImageLink}
+            onTimeUpdate={handleTimeUpdate}
+            onLoadedMetadata={(event) => {
+              setDuration(event.target.duration);
+              const savedTime = localStorage.getItem(video.id);
+              if (savedTime) {
+                event.target.currentTime = savedTime;
+              }
+            }}
+          >
+            <source src={video.link} type="application/x-mpegURL" />
+            Sorry, your browser doesn't support embedded videos.
+          </Video>
+          <Title>{video.title}</Title>
+        </>
+      )}
     </Container>
   );
 };
 
 VideoPlayer.propTypes = {
   video: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    videoUrl: PropTypes.string.isRequired,
     thumbnailUrl: PropTypes.string,
   }).isRequired,
 };
